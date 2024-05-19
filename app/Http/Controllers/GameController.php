@@ -29,4 +29,9 @@ class GameController extends Controller
 
         return redirect()->back();
     }
+
+    public function getGame(Game $game) {
+        $gameWithRelation = $game->with("categories.questions")->first();
+        return response()->json($gameWithRelation);
+    }
 }

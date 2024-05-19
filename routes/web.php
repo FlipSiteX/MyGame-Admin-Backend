@@ -56,5 +56,6 @@ Route::delete("/question/{question}", [QuestionController::class, "deleteQuestio
 
 // Игры
 Route::get("/games", [GameController::class, "getAllGame"])->name("getAllGame");
+Route::get("/game/{game}", [GameController::class, "getGame"])->name("getGame");
 Route::post("/game", [GameController::class, "addGame"])->name("addGame");
 Route::put("/game/{game}", [GameController::class, "addCategoryForGame"])->name("addCategoryForGame");

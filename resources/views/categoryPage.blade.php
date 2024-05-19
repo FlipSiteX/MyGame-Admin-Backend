@@ -16,20 +16,18 @@
                     <form action="{{ route('addQuestion') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-3">
                         @csrf 
                         @method("post")
-                        <textarea class='w-full h-24 border-2 p-2 rounded-lg' type="text" name="desc" placeholder="Описание"></textarea>
-                        <textarea class='w-full h-24 border-2 p-2 rounded-lg' type="text" name="question" placeholder="Вопрос"></textarea>
+                        <textarea class='w-full min-h-[46px] h-24 border-2 p-2 rounded-lg' type="text" name="desc" placeholder="Описание"></textarea>
+                        <textarea class='w-full min-h-[46px] h-24 border-2 p-2 rounded-lg' type="text" name="question" placeholder="Вопрос"></textarea>
                         <select class='w-full border-2 p-2 rounded-lg' name="question_type">
-                            <option value="#" disabled selected>Выберете тип вопроса</option>
-                            <option value="text">Текст</option>
+                            <option value="text" selected>Выберите тип вопроса</option>
                             <option value="img">Изображение</option>
                             <option value="video">Видео</option>
                             <option value="music">Звук</option>
                         </select>
                         <input type="file" name="question_file">
-                        <textarea class='w-full h-24 border-2 p-2 rounded-lg' type="text" name="answer" placeholder="Ответ"></textarea>
+                        <textarea class='w-full min-h-[46px] h-24 border-2 p-2 rounded-lg' type="text" name="answer" placeholder="Ответ"></textarea>
                         <select class='w-full border-2 p-2 rounded-lg' name="answer_type">
-                            <option value="#" disabled selected>Выберете тип ответа</option>
-                            <option value="text">Текст</option>
+                            <option value="text" selected>Выберите тип ответа</option>
                             <option value="img">Изображение</option>
                             <option value="video">Видео</option>
                             <option value="music">Звук</option>
