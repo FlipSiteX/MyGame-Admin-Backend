@@ -30,7 +30,7 @@ Route::get('/categ/{id}', function ($id) {
     $questions = Question::query()->where("category_id", "=", $id)->get();
 
     return view('categoryPage', ["category" => $category, "questions" => $questions]);
-});
+})->name('categ');
 
 Route::get('/set/{id}', function ($id) {
 
@@ -51,6 +51,7 @@ Route::delete("/category/{category}", [CategoryController::class, "deleteCategor
 Route::get("/questions", [QuestionController::class, "getQuestions"])->name("getQuestions");
 Route::get("/question/{question}", [QuestionController::class, "getQuestion"])->name("getQuestion");
 Route::post("/question", [QuestionController::class, "addQuestion"])->name("addQuestion");
+Route::get('/question/{question}/edit', [QuestionController::class, 'editQuestion'])->name('edit');
 Route::put("/question/{question}", [QuestionController::class, "updateQuestion"])->name("updateQuestion");
 Route::delete("/question/{question}", [QuestionController::class, "deleteQuestion"])->name("deleteQuestion");
 

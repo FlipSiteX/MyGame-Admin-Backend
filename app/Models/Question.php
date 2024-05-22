@@ -9,7 +9,20 @@ class Question extends Model
 {
     use HasFactory;
 
-    public function category() {
+    protected $fillable = [
+        'desc',
+        'question',
+        'category_id',
+        'answer',
+        'points',
+        'answer_type',
+        'question_type',
+        'question_file',
+        'answer_file'
+    ];
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }

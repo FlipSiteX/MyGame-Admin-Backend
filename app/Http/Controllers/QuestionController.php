@@ -26,12 +26,12 @@ class QuestionController extends Controller
 
         if ($request->file('question_file')) {
             $path_question = $request->file('question_file')->store('/public/file');
-            $question->question_file = '/storage/' . $path_question;
+            $question->question_file = 'storage/' . str_replace('public/', '', $path_question);
         }
 
         if ($request->file('answer_file')) {
             $path_answer = $request->file('answer_file')->store('/public/file');
-            $question->answer_file = '/storage/' . $path_answer;
+            $question->answer_file = 'storage/' . str_replace('public/', '', $path_answer);
         }
 
         $question->desc = $request->desc;
@@ -45,12 +45,37 @@ class QuestionController extends Controller
         return redirect()->back();
     }
 
+    public function editQuestion(Question $question)
+    {
+        return view('edit', compact('question'));
+    }
+
     public function updateQuestion(Request $request, Question $question)
     {
-        $question->update($request->all());
+        $validated = $request->validate([
+            'desc' => 'nullable|string',
+            'question' => 'required|string',
+            'question_type' => 'required|string',
+            'question_file' => 'nullable|file',
+            'answer' => 'required|string',
+            'answer_type' => 'required|string',
+            'answer_file' => 'nullable|file',
+            'points' => 'required|integer',
+        ]);
 
-        return redirect()->back();
+        if ($request->hasFile('question_file')) {
+            $validated['question_file'] = $request->file('question_file')->store('questions');
+        }
+
+        if ($request->hasFile('answer_file')) {
+            $validated['answer_file'] = $request->file('answer_file')->store('answers');
+        }
+
+        $question->update($validated);
+
+        return redirect()->route('categ', $question->category);
     }
+
 
     public function deleteQuestion(Question $question)
     {
