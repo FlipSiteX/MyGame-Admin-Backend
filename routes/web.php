@@ -40,18 +40,20 @@ Route::get('/set/{id}', function ($id) {
     return view('gamePage', ["game" => $game, "categories" => $categories]);
 });
 
+
 // Категории
 Route::get("/categories", [CategoryController::class, "getCategories"])->name("getCategories");
 Route::get("/category/{category}", [CategoryController::class, "getCategory"])->name("getcategory");
 Route::post("/category", [CategoryController::class, "addCategory"])->name("addCategory");
-Route::put("/category/{category}", [CategoryController::class, "updateCategory"])->name("updateCategory");
+Route::put("/category/{category}", [CategoryController::class, "update"])->name("category.update");
 Route::delete("/category/{category}", [CategoryController::class, "deleteCategory"])->name("deleteCategory");
+Route::get("/category/{category}/edit", [CategoryController::class, "edit"])->name("category.edit");
 
 // Вопросы
 Route::get("/questions", [QuestionController::class, "getQuestions"])->name("getQuestions");
 Route::get("/question/{question}", [QuestionController::class, "getQuestion"])->name("getQuestion");
 Route::post("/question", [QuestionController::class, "addQuestion"])->name("addQuestion");
-Route::get('/question/{question}/edit', [QuestionController::class, 'editQuestion'])->name('edit');
+Route::get('/question/{question}/edit', [QuestionController::class, 'editQuestion'])->name('question.edit');
 Route::put("/question/{question}", [QuestionController::class, "updateQuestion"])->name("updateQuestion");
 Route::delete("/question/{question}", [QuestionController::class, "deleteQuestion"])->name("deleteQuestion");
 
@@ -59,4 +61,6 @@ Route::delete("/question/{question}", [QuestionController::class, "deleteQuestio
 Route::get("/games", [GameController::class, "getAllGame"])->name("getAllGame");
 Route::get("/game/{game}", [GameController::class, "getGame"])->name("getGame");
 Route::post("/game", [GameController::class, "addGame"])->name("addGame");
-Route::put("/game/{game}", [GameController::class, "addCategoryForGame"])->name("addCategoryForGame");
+Route::put("/game/{game}", [GameController::class, "update"])->name("game.update");
+Route::delete("/game/{game}", [GameController::class, "deleteGame"])->name("deleteGame");
+Route::get("/game/{game}/edit", [GameController::class, "edit"])->name("game.edit");

@@ -14,6 +14,7 @@ class Question extends Model
         'question',
         'category_id',
         'answer',
+        'answer_desc',
         'points',
         'answer_type',
         'question_type',

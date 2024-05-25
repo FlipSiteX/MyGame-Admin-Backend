@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     use HasFactory;
+    protected $fillable = ['title'];
 
     public function categories() {
         return $this->hasMany(Category::class);

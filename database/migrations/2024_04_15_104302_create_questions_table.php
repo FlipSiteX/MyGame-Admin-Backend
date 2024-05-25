@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("question_type");
             $table->string("question_file")->nullable();
             $table->text("answer");
+            $table->text("answer_desc")->nullable();
             $table->string("answer_type");
             $table->string("answer_file")->nullable();
             $table->string("points");
